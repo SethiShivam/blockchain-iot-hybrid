@@ -1,0 +1,25 @@
+@media (max-width: 1366px) {
+
+}
+@media (max-width: 1024px) {
+
+}
+@media (max-width: 991px) {
+.ep_logo {float: right; padding: 12px 10px;}
+.ep_logo img { width:100px;}
+.nav_logo {padding: 6px 15px; }
+.nav_logo img { width:100px;}
+}
+@media (max-width: 767px) {
+.ep_logo {float: right; padding: 12px 10px;  margin-right:10px;}
+.ep_logo img { width:80px;}
+.nav_logo {padding: 12px 10px;}
+.nav_logo img { width:80px;}
+.navbar_custom { border:0; padding:9px 0;}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover { background-color:transparent;}
+.navbar .navbar-nav > li > a { text-align:center;}
+#navbar { background-color:#fbfbfb;}
+}
+@media (max-width: 375px) {
+
+}

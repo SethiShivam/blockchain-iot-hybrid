@@ -1,0 +1,63 @@
+<div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+    <ul class="nav nav-tabs responsive-tabs">
+        <li class="active"><a href="#WorkOrders">Work Orders/Repairing Claims</a></li>
+    </ul>
+    <div class="tab-content panelFull panelBorder">
+        <div id="WorkOrders" class="tab-pane active">
+            <div class="clearfix">&nbsp;</div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-xs-12 col-sm-12 col-md-12 table_bg" style="border-top:1px solid #FCB;">
+                        <span class="label label-default">*Status:</span>
+                        &nbsp;&nbsp;<span><b>N</b> : New request</span>
+                        &nbsp;&nbsp;<span><b>J</b> : Rejected</span>
+                        &nbsp;&nbsp;<span><b>R</b> : Repaired</span>
+                        &nbsp;&nbsp;<span><b>F</b> : Re Imbursed</span>
+                        &nbsp;&nbsp;<span><b>P</b> : Police verified</span>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Order UUID</th>
+                                        <th>Claim Request UUID</th>
+                                        <th>Policy Contract UUID</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="order in vm.workOrders">
+                                        <td>{{order.uuid}}</td>
+                                        <td>{{order.claim_uuid}}</td>
+                                        <td>{{order.contract_uuid}}</td>
+                                        <td><button ng-click="vm.completeOrder(order)" type="button" class="btn btn-success btn-sm">Mark as complete</button></td>
+                                    </tr>                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+                            <ul class="pagination pagination-primary pull-right">
+                                <li>
+                                    <a href="#">
+                                        < </a>
+                                </li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li class="active"><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#"> > </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('.responsive-tabs').responsiveTabs({
+        accordionOn: ['xs', 'sm']
+    });
+</script>

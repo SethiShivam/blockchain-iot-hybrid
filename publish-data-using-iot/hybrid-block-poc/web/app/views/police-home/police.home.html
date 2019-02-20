@@ -1,0 +1,105 @@
+<div ng-controller="PoliceHomeController">
+	<div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+		    
+		    <ul class="nav nav-tabs responsive-tabs">
+	            <li class="active"><a href="#RequestedClaims">Requested Claims ( Theft/ Accidental )</a></li>     
+	        </ul>
+		   
+		    <div class="tab-content panelFull panelBorder">
+		    	<div id="RequestedClaims" class="tab-pane active">
+		            <div class="row">
+		                <div class="col-xs-12 col-sm-12 col-md-12">
+		                    <div class="col-xs-12 col-sm-12 col-md-12 table_bg">
+		                        <div class="table-responsive">
+		                            <table class="table table-hover">
+		                                <thead>
+		                                    <tr>
+		                                        <th>claim request uuid</th>
+		                                        <th>policy contract uuid</th>
+		                                        <th>description</th>
+		                                        <th>Claim requested by</th>
+		                                        <th>#</th>
+		                                        <th>#</th>
+		                                    </tr>
+		                                </thead>
+		                                <tbody>
+		                                    <tr ng-repeat="claims in vm.requestedNewClaims">
+		                                        <td>{{claims.uuid}}</td>
+		                                        <td>{{claims.contract_uuid}}</td>
+		                                        <td>{{claims.description}}</td>
+		                                        <td>{{claims.name}}</td>
+		                                        <td><button ng-click="vm.viewClaimRequest(claims)" type="button" class="btn btn-success btn-sm">View Claim Request</button></td>
+		                                        <td><button ng-click="vm.rejectClaimRequest(claims)" type="button" class="btn btn-danger btn-sm">Reject</button></td>
+
+		                                    </tr>                                    
+		                                </tbody>
+		                            </table>
+		                        </div>
+		                        
+		                    </div>
+		                </div>
+		            </div>
+
+		            <!-- confirm claim -->
+		            <div class="row" ng-show="vm.confirmClaimView">
+		                <h4 class="padding-2">&nbsp;&nbsp;&nbsp;Verify Claim </h4>
+		                <form name="frmConfirmClaim" ng-submit="vm.confirmClaimRequest(frmConfirmClaim.$valid,vm.confclaim,vm.fileclaimuuid,vm.contractuuid)" autocomplete="off" novalidate>
+		                    
+		                    <div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+		                    	
+		                    	<div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+		                            <div class="col-xs-12 col-sm-4 col-md-3 form-group label-floating">
+		                                    <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+		                                        <label class="control-label">Requested By</label>
+		                                        <label><b>{{vm.requesterName}}</b></label>
+		                                    </div>
+		                            </div>
+		                        </div>
+
+		                        <div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+		                            <div class="col-xs-12 col-sm-4 col-md-3 form-group label-floating">
+		                                    <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+		                                        <label class="control-label">Claim reason given by Requeter</label>
+		                                        <label><b>{{vm.requesterReason}}</b></label>
+		                                    </div>
+		                            </div>
+		                        </div>
+
+		                        <div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+		                            <div class="col-xs-12 col-sm-4 col-md-3 form-group label-floating">
+		                                    <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+		                                        <label class="control-label">Is Theft</label>
+		                                        <input type="checkbox" class="form-control" name="isTheft" ng-model="vm.confclaim.isTheft" ng-checked="false" style="width:5%!important;">
+		                                    </div>
+		                            </div>
+		                        </div>
+
+		                        <div class="col-xs-12 col-sm-4 col-md-3 label-floating">
+		                            <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+		                               <label class="control-label">Police Investigation Report file:</label>
+		                               <input type="file" class="form-control-file" file-model="vm.confclaim.myFile">
+
+		                                 
+		                                <span class="error">
+		                                    <span ng-show="vm.fileError">Please upload First Investigation Report (F.I.R)</span>
+		                                </span> 
+		                            	
+		                            </div>
+		                        </div>
+		                    </div>    
+		                    <div class="col-xs-12 col-sm-4 col-md-3">
+		                        <button type="submit" class="btn btn-primary">Confirm</button>
+		                        <button type="submit" class="btn" ng-click="vm.confirmClaimView=false">Close</button>
+		                    </div>
+		                </form>        
+		            </div>
+
+	        	</div>
+			</div>
+	</div>
+</div>
+<script type="text/javascript">
+    $('.responsive-tabs').responsiveTabs({
+        accordionOn: ['xs', 'sm']
+    });
+</script>

@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart Insurance</title>
+    <link rel="icon" href="assets/images/ep_icon.png">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap-responsive-tabs.css" />
+    <link rel="stylesheet" href="assets/css/material-kit.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/media.css" />
+    <link rel="stylesheet" href="assets/css/angular-toastr.css" />
+    
+    <script src="assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.bootstrap-responsive-tabs.min.js" type="text/javascript"></script>
+    <script src="assets/js/material.min.js" type="text/javascript"></script>
+    <script src="assets/js/material-kit.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        .btn:active { transform: translateY(4px); }
+    </style>
+
+
+</head>
+
+<body ng-app="insuaranceApp" ng-cloak>
+    <ui-view name="header"></ui-view>
+
+    <div class="container-fluid">
+        <ui-view></ui-view>
+    </div>
+    
+    <ui-view name="footer" class="footer"></ui-view>
+
+    <!-- Angular Library Start -->
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/angular-ui-router.min.js"></script>
+    <script src="assets/js/angular-toastr.tpls.js"></script>
+    <script src="app.js"></script>
+
+    <script src="views/user/user.service.js"></script>
+    <script src="views/user/user.controller.js"></script>
+    <script src="views/user-home/userHome.controller.js"></script>
+    <script src="views/user-home/userHome.service.js"></script>
+    <script src="views/home/userLogin.controller.js"></script>
+   
+    <script src="views/insurance/insurance.service.js"></script>
+    <script src="views/insurance/insuaranceCompany.controller.js"></script>
+    <script src="views/ins/ins.controller.js"></script>
+    <script src="views/ins/ins.service.js"></script>
+
+    <script src="views/police/police.controller.js"></script>
+    <script src="views/police/police.service.js"></script>
+    <script src="views/police-home/police.home.controller.js"></script>
+    <script src="views/police-home/police.home.service.js"></script>
+    
+    <script src="views/service-center/serviceCenter.controller.js"></script>
+    <script src="views/service-center/serviceCenter.service.js"></script>
+    <script src="views/service-center-home/service.center.home.controller.js"></script>
+    <script src="views/service-center-home/service.center.home.service.js"></script>
+    
+</body>
+
+</html>

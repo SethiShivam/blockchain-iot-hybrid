@@ -1,0 +1,10 @@
+name: "Org Client" 
+version: "1.0"
+
+client: 
+ organization: Org2
+
+credentialStore:
+    path: "/home/codezeros/Documents/ShivamHyperledger/car auction/car-auction-network-fabric-node-sdk/hfc-key-store"
+    cryptoStore:
+      path: "/home/codezeros/Documents/ShivamHyperledger/car auction/car-auction-network-fabric-node-sdk/hfc-key-store"

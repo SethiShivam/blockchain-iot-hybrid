@@ -1,0 +1,270 @@
+<div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+    <ul class="nav nav-tabs responsive-tabs">
+        <li class="active"><a href="#Policy">Policy</a></li>
+        <li><a href="#ActiveClaims" ng-click="vm.fetchActiveClaimConfirmedByPolice()">Active Claims</a></li>
+    </ul>
+    <div class="tab-content panelFull panelBorder">
+        <div id="Policy" class="tab-pane active">
+            <div class="row">
+
+            <form name="frmPolicy" ng-submit="vm.savePolicy(frmPolicy,vm.policy)" autocomplete="off" novalidate>
+                <div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+                    
+                    <div class="col-xs-12 col-sm-4 col-md-3 form-group label-floating">
+                        <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+                            <label class="control-label">Title</label>
+                            <input type="Condition" name="condition" ng-model="vm.policy.condition" class="form-control" required>
+                            <span class="error" ng-if="frmPolicy.$submitted || frmPolicy.condition.$dirty && frmPolicy.condition.$invalid">
+                                <span ng-show="frmPolicy.condition.$error.required">Please enter proper name</span>
+                            </span>
+                        </div>
+                    </div>    
+
+                    <div class="col-xs-12 col-sm-4 col-md-3 form-group label-floating">
+                        <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+                            <label class="control-label">Formula per day</label>
+                            <input type="FormulaPerDay" name="formulaPerDay" ng-model="vm.policy.formulaPerDay" class="form-control" required>
+                            <span class="error" ng-if="frmPolicy.$submitted || frmPolicy.formulaPerDay.$dirty && frmPolicy.formulaPerDay.$invalid">
+                                <span ng-show="frmPolicy.formulaPerDay.$error.required">Please enter formula per day</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4 col-md-3 form-group label-floating">
+                        <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+                            <label class="control-label">Maximum sum insured</label>
+                            <input type="MaximumSumInsured" name="maximumSumInsured" ng-model="vm.policy.maximumSumInsured" class="form-control" required>
+                            <span class="error" ng-if="frmPolicy.$submitted || frmPolicy.maximumSumInsured.$dirty && frmPolicy.maximumSumInsured.$invalid">
+                                <span ng-show="frmPolicy.maximumSumInsured.$error.required">Please enter maximum sum insured</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4 col-md-3 form-group label-floating">
+                        <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+                            <label class="control-label">Theft insured</label>
+                            <input type="checkbox" class="form-control" name="theftInsured" ng-model="vm.policy.theftInsured" ng-checked="false" style="width:5%!important;"> 
+                        </div>
+                    </div>
+
+                    <div class="clearfix">&nbsp;</div>
+
+                    <div class="col-xs-12 col-sm-4 col-md-3 form-group label-floating">
+                        <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+                            <label class="control-label">Description</label>
+                            <input type="Description" name="description" ng-model="vm.policy.description" class="form-control" required>
+                            <span class="error" ng-if="frmPolicy.$submitted || frmPolicy.description.$dirty && frmPolicy.description.$invalid">
+                                <span ng-show="frmPolicy.description.$error.required">Please enter policy description</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4 col-md-3 form-group label-floating">
+                        <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+                            <label class="control-label">Minimum duration days</label>
+                            <input type="MinimumDurationDays" name="minimumDurationDays" ng-model="vm.policy.minimumDurationDays" class="form-control" required>
+                            <span class="error" ng-if="frmPolicy.$submitted || frmPolicy.minimumDurationDays.$dirty && frmPolicy.minimumDurationDays.$invalid">
+                                <span ng-show="frmPolicy.minimumDurationDays.$error.required">Please enter policy Minimum duration days</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4 col-md-3 form-group label-floating">
+                        <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+                            <label class="control-label">Maximum duration days</label>
+                            <input type="MinimumDurationDays" name="maximumDurationDays" ng-model="vm.policy.maximumDurationDays" class="form-control" required>
+                            <span class="error" ng-if="frmPolicy.$submitted || frmPolicy.maximumDurationDays.$dirty && frmPolicy.maximumDurationDays.$invalid">
+                                <span ng-show="frmPolicy.maximumDurationDays.$error.required">Please enter policy Maximum duration days</span>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <button type="submit" class="btn btn-primary">Add Policy</button>
+                </div>
+            </form>    
+            </div>    
+            
+            <div class="clearfix">&nbsp;</div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-xs-12 col-sm-12 col-md-12 table_bg">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">UUID</th>
+                                        <th>Name</th>
+                                        <th>Formula per day</th>
+                                        <th>Max sum insured</th>
+                                        <th>Is theft insured</th>
+                                        <th>Description</th>
+                                        <th>Minimum duration days</th>
+                                        <th>Maximum duration days</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="policy in vm.policies">
+                                        <td class="text-center">{{policy.uuid}}</td>
+                                        <td>{{policy.conditions}}</td>
+                                        <td>{{policy.formula_per_day}}</td>
+                                        <td>{{policy.max_sum_insured}}</td>
+                                        <td>{{policy.theft_insured}}</td>
+                                        <td>{{policy.description}}</td>
+                                        <td>{{policy.min_duration_days}}</td>
+                                        <td>{{policy.max_duration_days}}</td>
+                                        <td>{{policy.active == true ? "Active" : "In Active"}}</td>
+                                        <td>
+                                            <button ng-show="{{policy.active == false}}" ng-click="vm.activatePolicy(policy)" type="button" class="btn btn-success btn-sm">Active</button>
+                                            <button ng-show="{{policy.active == true}}" ng-click="vm.deActivatePolicy(policy)" type="button" class="btn btn-danger btn-sm">Deactive</button>
+                                        </td>
+                                    </tr>                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+                            <ul class="pagination pagination-primary pull-right">
+                                <li>
+                                    <a href="#">
+                                        < </a>
+                                </li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li class="active"><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#"> > </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ActiveClaims" class="tab-pane">
+            <div class="clearfix">&nbsp;</div>
+
+                <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-12 table_bg">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>claim request uuid</th>
+                                                <th>policy contract uuid</th>
+                                                <th>claim date</th>
+                                                <th>description</th>
+                                                <th>is theft</th>
+                                                <th>status</th>
+                                                <th>reimbursable</th>
+                                                <th>repaired</th>
+                                                <th>Police Investigation Report (F.I.R)</th>
+                                                <th rowspan="3"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="claim in vm.confirmedClaimsByPolice">
+                                                <td>{{claim.uuid}}</td>
+                                                <td>{{claim.contract_uuid}}</td>
+                                                <td>{{claim.date}}</td>
+                                                <td>{{claim.description}}</td>
+                                                <td>{{claim.is_theft}}</td>
+                                                <td>{{claim.status}}</td>
+                                                <td>{{claim.reimbursable}}</td>
+                                                <td>{{claim.repaired}}</td>
+                                                <td><a href="http://localhost:8080/ipfs/{{claim.file_reference}}" target="_blank">VIEW<a></td>
+
+                                                <td><button ng-click="vm.viewReImburseFm(claim)" type="button" class="btn btn-info btn-sm">ReImburse</button></td>
+                                                <td><button ng-click="vm.rejectClaimFinal(claim)" type="button" class="btn btn-danger btn-sm">Reject</button></td>
+                                                <td><button ng-show="{{!claim.is_theft}}" ng-click="vm.processForRepairing(claim)" type="button" class="btn btn-warning btn-sm">Repair</button></td>
+                                            </tr>                                    
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                            </div>
+                        </div>
+                </div>
+
+                <!-- confirm claim -->
+                <div class="row" ng-show="vm.vreimburseForm">
+                    <h4 class="padding-2">&nbsp;&nbsp;&nbsp;Re-Imburse Claim </h4>
+                    <form name="frmReImburseClaim" ng-submit="vm.reImburseAmount(frmReImburseClaim.$valid,vm.rimObj,vm.claimId,vm.contractuuId)" autocomplete="off" novalidate>
+                        
+                        <div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+                            
+                            <div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+                                <div class="col-xs-12 col-sm-4 col-md-3 form-group label-floating">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+                                            <label class="control-label">Claim Requested Id</label>
+                                            <label><b>{{vm.claimId}}</b></label>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+                                <div class="col-xs-12 col-sm-4 col-md-3 form-group label-floating">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+                                            <label class="control-label">Requested Date</label>
+                                            <label><b>{{vm.claimDate}}</b></label>
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+                                <div class="col-xs-12 col-sm-4 col-md-3 form-group label-floating">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+                                            <label class="control-label">Description</label>
+                                            <label><b>{{vm.claimDesc}}</b></label>
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+                                <div class="col-xs-12 col-sm-4 col-md-3 form-group label-floating">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+                                            <label class="control-label">Is Theft</label>
+                                            <input type="checkbox" class="form-control" disabled="disabled" name="isTheft" ng-checked="vm.isThefT" style="width:5%!important;">
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+                                <div class="col-xs-12 col-sm-4 col-md-3 form-group label-floating">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+                                            <label class="control-label">F.I.R report file</label>
+                                            <label><b><a href="http://localhost:8080/ipfs/{{vm.fileRef}}" target="_blank">Access</a></b></label>
+                                            
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-4 col-md-3 form-group label-floating">
+                                <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+                                    <label class="control-label">Amount:</label>
+                                    <input type="Description" name="amount" ng-model="vm.rimObj.amount" class="form-control" required>
+                                    <span class="error" ng-if="frmReImburseClaim.$submitted || frmReImburseClaim.amount.$dirty && frmReImburseClaim.amount.$invalid">
+                                        <span ng-show="frmReImburseClaim.amount.$error.required">Please enter amount</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>    
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            <button type="submit" class="btn btn-primary">ReImburse</button>
+                            <button type="submit" class="btn" ng-click="vm.vreimburseForm=false">Close</button>
+                        </div>
+                    </form>        
+                </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('.responsive-tabs').responsiveTabs({
+        accordionOn: ['xs', 'sm']
+    });
+</script>

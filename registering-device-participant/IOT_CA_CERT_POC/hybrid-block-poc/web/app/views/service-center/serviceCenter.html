@@ -1,0 +1,48 @@
+<div ng-controller="ServiceCenterController">
+    <div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+        <ul class="nav nav-tabs responsive-tabs">
+            <li class="active"><a href="#serviceLogin">Login</a></li>        
+        </ul>
+
+        <div class="tab-content panelFull panelBorder">
+            <!-- Login -->
+            <div id="serviceLogin" class="tab-pane active">
+                <div class="row">
+                    <form name="frmServiceCenterLogin" ng-submit="vm.serviceCenterAdminLogin(frmServiceCenterLogin.$valid,vm.sclogin)" autocomplete="off" novalidate>
+                        <div class="col-sm-12 col-md-12 col-xs-12 padding-0">
+                            <div class="col-xs-12 col-sm-6 col-md-4 form-group label-floating">
+                                <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+                                    <label class="control-label">Email</label>
+                                    <input type="text" name="email" ng-model="vm.sclogin.email" class="form-control" required>
+                                    <span class="error" ng-if="frmServiceCenterLogin.$submitted || frmServiceCenterLogin.email.$dirty && frmServiceCenterLogin.email.$invalid">
+                                        <span ng-show="frmServiceCenterLogin.email.$error.required">Please enter email</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-xs-12 col-sm-6 col-md-4 form-group label-floating">
+                                <div class="col-xs-12 col-sm-12 col-md-12 padding-0">
+                                    <label class="control-label">Password</label>
+                                    <input type="text" name="pwd" ng-model="vm.sclogin.pwd" class="form-control" required>
+                                    <span class="error" ng-if="frmServiceCenterLogin.$submitted || frmServiceCenterLogin.pwd.$dirty && frmServiceCenterLogin.pwd.$invalid">
+                                        <span ng-show="frmServiceCenterLogin.pwd.$error.required">Please enter password</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>  
+                    </form>
+                </div>        
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('.responsive-tabs').responsiveTabs({
+        accordionOn: ['xs', 'sm']
+    });
+
+</script>            
